@@ -1,0 +1,42 @@
+model_list:
+  - model_name: ollama/gemma3 # The name you use in litellm.completion
+    litellm_params:
+      model: ollama/gemma3:4b # The actual model identifier for the provider
+      api_base: "http://192.168.0.34:11434" # Default, change if needed
+
+  - model_name: ollama/deepseek-r1 # The name you use in litellm.completion
+    litellm_params:
+      model: ollama/deepseek-r1:latest # The actual model identifier for the provider
+      api_base: "http://192.168.0.34:11434" # Default, change if needed
+
+  - model_name: qwen2.5-coder
+    litellm_params:
+      model: ollama/qwen2.5-coder:1.5b
+      api_base: "http://192.168.0.34:11434"
+
+  - model_name: codellama
+    litellm_params:
+      model: ollama/codellama:latest
+      api_base: "http://192.168.0.34:11434"
+
+  - model_name: ollama/qwen2.5vl
+    litellm_params:
+      model: ollama/qwen2.5vl:3b
+      api_base: "http://192.168.0.34:11434"
+
+  - model_name: ollama/nomic-embed-text
+    litellm_params:
+      model: ollama/nomic-embed-text
+      api_base: "http://192.168.0.34:11434"
+      drop_params: "true"
+litellm_settings:
+  drop_params: True
+  set_verbose: True
+
+general_settings:
+  # Optional: Set global settings like timeouts
+  # timeout: 300 # 5 minutes
+
+# You can define custom environment variables within the config too
+environment_variables:
+  OPENAI_API_KEY: "" # Define placeholders or actual keys (less secure)
