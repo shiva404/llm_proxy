@@ -37,7 +37,7 @@ model_list:
 
   - model_name: kokoro
     litellm_params:
-      model: custom/kokoro
+      model: openai_like/kokoro
       api_base: "http://192.168.0.34:8880/v1"
 
 litellm_settings:
