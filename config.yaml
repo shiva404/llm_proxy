@@ -35,11 +35,6 @@ model_list:
       api_base: "http://192.168.0.34:11434"
       drop_params: "true"
 
-  - model_name: kokoro
-    litellm_params:
-      model: openai_like/kokoro
-      api_base: "http://192.168.0.34:8880/v1"
-
 litellm_settings:
   drop_params: True
   set_verbose: True
