@@ -12,4 +12,4 @@ ollama pull llama3
 
 pip install -r requirements.txt
 
-litellm --config config.yaml
+nohup litellm --config config.yaml --port 4000 > litellm.log 2>&1 &
