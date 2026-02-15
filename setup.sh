@@ -10,4 +10,4 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 ollama pull llama3
 
-pip install -R requirements.txt
+pip install -r requirements.txt
