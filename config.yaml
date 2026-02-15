@@ -32,7 +32,7 @@ model_list:
   - model_name: ollama/nomic-embed-text
     litellm_params:
       model: ollama/nomic-embed-text
-      api_base: "http://192.168.0.34:11434"
+      api_base: "http://127.0.0.1:11434"
       drop_params: "true"
   - model_name: gemini-flash
     litellm_params:
