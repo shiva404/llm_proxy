@@ -34,6 +34,7 @@ model_list:
       model: ollama/nomic-embed-text
       api_base: "http://127.0.0.1:11434"
       drop_params: "true"
+
   - model_name: gemini-flash
     litellm_params:
       model: gemini/gemini-2.5-flash
@@ -42,6 +43,11 @@ model_list:
   - model_name: gemini-2.5-flash-lite  # User-facing name
     litellm_params:
       model: gemini/gemini-2.5-flash-lite # Internal LiteLLM model string
+      api_key: os.environ/GEMINI_API_KEY # Reference the environment variable
+
+  - model_name: gemini-gemma=27b  # User-facing name
+    litellm_params:
+      model: gemini/gemma-3-27b-it # Internal LiteLLM model string
       api_key: os.environ/GEMINI_API_KEY # Reference the environment variable
 
 litellm_settings:
