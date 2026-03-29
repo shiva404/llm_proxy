@@ -1,18 +1,10 @@
 model_list:
-  - model_name: gemma3-4b # The name you use in litellm.completion
-    litellm_params:
-      model: ollama/gemma3:4b # The actual model identifier for the provider
-      api_base: "http://192.168.0.34:11434" # Default, change if needed
 
   - model_name: deepseek-r1-8b # The name you use in litellm.completion
     litellm_params:
       model: ollama/deepseek-r1:latest # The actual model identifier for the provider
       api_base: "http://0.0.0.0:11434" # Default, change if needed
-
-  - model_name: qwen2.5-coder
-    litellm_params:
-      model: ollama/qwen2.5-coder:1.5b
-      api_base: "http://192.168.0.34:11434"
+      stream: false
 
   - model_name: codellama
     litellm_params:
@@ -29,6 +21,12 @@ model_list:
       model: ollama/qwen3:8b
       api_base: "http://0.0.0.0:11434"
 
+  - model_name: qwen35-2b
+    litellm_params:
+      model: ollama/qwen3.5:2b
+      api_base: "http://0.0.0.0:11434"
+      extra_body: {"chat_template_kwargs": {"enable_thinking": false}}
+
   - model_name: ollama/nomic-embed-text
     litellm_params:
       model: ollama/nomic-embed-text
@@ -39,20 +37,42 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
+      rpm: 5 # Requests per minute
+      tpm: 100000 # Tokens per minute
 
-  - model_name: gemini-2.5-flash-lite  # User-facing name
+  - model_name: gemini-2.5-flash-lite  
     litellm_params:
-      model: gemini/gemini-2.5-flash-lite # Internal LiteLLM model string
-      api_key: os.environ/GEMINI_API_KEY # Reference the environment variable
+      model: gemini/gemini-2.5-flash-lite 
+      api_key: os.environ/GEMINI_API_KEY 
 
-  - model_name: gemini-gemma=27b  # User-facing name
+  - model_name: gemini-gemma-27b  
     litellm_params:
-      model: gemini/gemma-3-27b-it # Internal LiteLLM model string
-      api_key: os.environ/GEMINI_API_KEY # Reference the environment variable
+      model: gemini/gemma-3-27b-it 
+      api_key: os.environ/GEMINI_API_KEY 
+
+  - model_name: gpt-5.4-nano  
+    litellm_params:
+      model: openai/gpt-5.4-nano 
+      api_key: os.environ/OPENAI_API_KEY 
+
+  - model_name: gpt-5.4-mini  
+    litellm_params:
+      model: openai/gpt-5.4-mini 
+      api_key: os.environ/OPENAI_API_KEY 
+
+  - model_name: gpt-5.4  
+    litellm_params:
+      model: openai/gpt-5.4 
+      api_key: os.environ/OPENAI_API_KEY 
+
 
 litellm_settings:
   drop_params: True
   set_verbose: True
+
+router_settings:
+  fallbacks:
+    - "gemini-flash": "gemini-2.5-flash-lite"
 
 general_settings:
   # Optional: Set global settings like timeouts
